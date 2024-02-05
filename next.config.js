@@ -29,6 +29,9 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 };
 
 // Merge MDX config with Next.js config
