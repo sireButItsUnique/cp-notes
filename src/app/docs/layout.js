@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Sidebar from "@/components/sidebar/Sidebar.jsx";
+import direcectoryData from "./directoryData";
 
 export default function DocLayout({ children }) {
 	const url = usePathname();
@@ -11,23 +12,16 @@ export default function DocLayout({ children }) {
 	const [sidebarLinks, setSidebarLinks] = useState(false);
 
 	useEffect(() => {
-		fetch("/api/data", {
-			method: "GET",
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				for (const header in data) {
-					for (let i = 0; i < data[header].length; i++) {
-						if (data[header][i][1] == page) {
-							data[header][i][2] = true;
-
-							break;
-						}
-					}
+		for (const header in direcectoryData) {
+			for (let i = 0; i < direcectoryData[header].length; i++) {
+				if (direcectoryData[header][i][1] == page) {
+					direcectoryData[header][i][2] = true;
+					break;
 				}
+			}
+		}
 
-				setSidebarLinks(data);
-			});
+		setSidebarLinks(direcectoryData);
 	}, []);
 
 	return (
@@ -35,9 +29,17 @@ export default function DocLayout({ children }) {
 			<div>
 				<section className="relative">
 					{sidebarLinks ? (
-						<Sidebar loaded={true} sections={sidebarLinks} setSections={setSidebarLinks} />
+						<Sidebar
+							loaded={true}
+							sections={sidebarLinks}
+							setSections={setSidebarLinks}
+						/>
 					) : (
-						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} />
+						<Sidebar
+							loaded={false}
+							sections={sidebarLinks}
+							setSections={setSidebarLinks}
+						/>
 					)}
 				</section>
 
@@ -48,7 +50,9 @@ export default function DocLayout({ children }) {
 						width="50"
 						height="50"
 					/>
-					{children}
+					<section className="pt-14 pb-12 pl-[24.5rem] pr-20">
+						<div className="text-left markdown">{children}</div>
+					</section>
 				</section>
 			</div>
 		</main>

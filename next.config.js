@@ -26,10 +26,10 @@ const nextConfig = {
 	experimental: {
 		serverActions: true,
 	},
+	images: {
+		unoptimized: true,
+	},
 };
 
 // Merge MDX config with Next.js config
 module.exports = withMDX(nextConfig);
-
-// Environment Variables
-module.exports = nextConfig;
