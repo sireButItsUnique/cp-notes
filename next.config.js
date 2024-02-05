@@ -18,13 +18,6 @@ const nextConfig = {
 	// Optionally, add any other Next.js config below
 	reactStrictMode: true,
 	output: "export",
-};
-
-// Merge MDX config with Next.js config
-module.exports = withMDX(nextConfig);
-
-// Environment Variables
-module.exports = {
 	env: {
 		USERNAME: process.env.USERNAME,
 		PASSWORD: process.env.PASSWORD,
@@ -34,3 +27,9 @@ module.exports = {
 		serverActions: true,
 	},
 };
+
+// Merge MDX config with Next.js config
+module.exports = withMDX(nextConfig);
+
+// Environment Variables
+module.exports = nextConfig;
