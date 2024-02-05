@@ -27,5 +27,4 @@ yarn-error.log*
 next-env.d.ts
 
 # misc
-package-lock.json
 node_modules
