@@ -24,7 +24,7 @@ const nextConfig = {
 		ADMIN_ID: process.env.ADMIN_ID,
 	},
 	experimental: {
-		serverActions: true,
+		serverActions: false,
 	},
 	images: {
 		unoptimized: true,

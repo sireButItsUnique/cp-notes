@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Sidebar from "@/components/sidebar/Sidebar.jsx";
-import direcectoryData from "./directoryData";
+import directoryData from "../../data/directoryData.js";
 
 export default function DocLayout({ children }) {
 	const url = usePathname();
@@ -12,16 +12,16 @@ export default function DocLayout({ children }) {
 	const [sidebarLinks, setSidebarLinks] = useState(false);
 
 	useEffect(() => {
-		for (const header in direcectoryData) {
-			for (let i = 0; i < direcectoryData[header].length; i++) {
-				if (direcectoryData[header][i][1] == page) {
-					direcectoryData[header][i][2] = true;
+		for (const header in directoryData) {
+			for (let i = 0; i < directoryData[header].length; i++) {
+				if (directoryData[header][i][1] == page) {
+					directoryData[header][i][2] = true;
 					break;
 				}
 			}
 		}
 
-		setSidebarLinks(direcectoryData);
+		setSidebarLinks(directoryData);
 	}, []);
 
 	return (

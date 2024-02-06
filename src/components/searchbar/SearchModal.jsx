@@ -4,6 +4,7 @@ import Searchbar from "@/components/searchbar/Searchbar.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import directoryData from "../../data/directoryData.js";
 
 function getIndividual(regex, size, individual) {
 	if (individual.match(regex)) {
@@ -31,14 +32,8 @@ export default function SearchModal(props) {
 	const [searchResults, setSearchResults] = useState(false);
 
 	useEffect(() => {
-		fetch("/api/data", {
-			method: "GET",
-		})
-			.then((res) => res.json())
-			.then((text) => {
-				setAllResults(text);
-				setSearchResults(text);
-			});
+		setAllResults(directoryData);
+		setSearchResults(directoryData);
 	}, []);
 
 	function closeModal() {
