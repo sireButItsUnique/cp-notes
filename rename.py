@@ -7,7 +7,7 @@ def rename(filePath):
 
 	file = open(html, "w")
 	file.write(content.replace("/_next/static", "https://sirebutitsunique.github.io/cp-notes/_next/static"))
-	file.write(content.replace("images", "https://sirebutitsunique.github.io/cp-notes/images"))
+	file.write(content.replace("/images", "https://sirebutitsunique.github.io/cp-notes/images"))
 	file.close()
 
 nojekyll = open("./out/.nojekyll", "x")
