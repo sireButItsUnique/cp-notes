@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build && py ./rename.py",
+		"push": "git branch -D host && git subtree split --prefix=out -b host && git push origin host --force",
 		"start": "next start",
 		"lint": "next lint"
 	},

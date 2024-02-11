@@ -1,6 +1,6 @@
 import os
 def rename(filePath):
-	html = "./docs" + filePath
+	html = "./out" + filePath
 	file = open(html, "r")
 	content = file.read()
 	file.close()
@@ -10,8 +10,7 @@ def rename(filePath):
 	file.write(content.replace("/images", "https://sirebutitsunique.github.io/cp-notes/images"))
 	file.close()
 
-os.rename("./out", "./docs")
-f = open("./docs/.nojekyll", "x")
+f = open("./out/.nojekyll", "x")
 rename("/index.html")
 rename("/index.txt")
 rename("/404.html")
