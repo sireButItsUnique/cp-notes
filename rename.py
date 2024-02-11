@@ -10,7 +10,12 @@ def rename(filePath):
 	file.write(content.replace("/images", "https://sirebutitsunique.github.io/cp-notes/images"))
 	file.close()
 
-f = open("./out/.nojekyll", "x")
+nojekyll = open("./out/.nojekyll", "x")
+gitignore = open("./out/.gitignore", "w")
+gitignore.write("node_modules/\n.next/")
+
+nojekyll.close()
+gitignore.close()
 rename("/index.html")
 rename("/index.txt")
 rename("/404.html")
