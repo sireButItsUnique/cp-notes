@@ -1,5 +1,5 @@
 1:HL["https://sirebutitsunique.github.io/cp-notes/_next/static/css/025fa95f675c3552.css","style",{"crossOrigin":""}]
-0:["Myb8-3vK_eok7fJLnDMd_",[[["",{"children":["docs",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"https://sirebutitsunique.github.io/cp-notes/_next/static/css/025fa95f675c3552.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
+0:["mzmnWlb-Pe11wimp1WwhJ",[[["",{"children":["docs",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"https://sirebutitsunique.github.io/cp-notes/_next/static/css/025fa95f675c3552.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
 4:I[3713,["958","static/chunks/69b09407-0186f2ecb83cdcfd.js","413","static/chunks/413-20381f5411d36fff.js","748","static/chunks/748-af2aa09d6fd45956.js","185","static/chunks/app/layout-8f7ec05495b97042.js"],""]
 5:I[6954,[],""]
 6:I[7264,[],""]
@@ -9,7 +9,7 @@
 9:E{"digest":"NEXT_REDIRECT;replace;/docs/installation;false"}
 8:null
 1:HL["/_next/static/css/025fa95f675c3552.css","style",{"crossOrigin":""}]
-0:["Myb8-3vK_eok7fJLnDMd_",[[["",{"children":["docs",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/025fa95f675c3552.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
+0:["mzmnWlb-Pe11wimp1WwhJ",[[["",{"children":["docs",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L2",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/025fa95f675c3552.css","precedence":"next","crossOrigin":""}]],"$L3"]]]]
 4:I[3713,["958","static/chunks/69b09407-0186f2ecb83cdcfd.js","413","static/chunks/413-20381f5411d36fff.js","748","static/chunks/748-af2aa09d6fd45956.js","185","static/chunks/app/layout-8f7ec05495b97042.js"],""]
 5:I[6954,[],""]
 6:I[7264,[],""]
