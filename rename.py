@@ -1,11 +1,21 @@
 import os
 def rename(filePath):
-	filePath = "./docs" + filePath
-	file = open(filePath, "r")
+	html = "./docs" + filePath + ".html"
+	file = open(html, "r")
 	content = file.read()
 	file.close()
 
-	file = open(filePath, "w")
+	file = open(html, "w")
+	file.write(content.replace("/_next/static", "./_next/static"))
+	file.write(content.replace("/images", "./images"))
+	file.close()
+
+	txt = "./docs" + filePath + ".txt"
+	file = open(txt, "r")
+	content = file.read()
+	file.close()
+
+	file = open(txt, "w")
 	file.write(content.replace("/_next/static", "./_next/static"))
 	file.write(content.replace("/images", "./images"))
 	file.close()
