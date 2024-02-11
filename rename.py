@@ -1,29 +1,23 @@
 import os
 def rename(filePath):
-	html = "./docs" + filePath + ".html"
+	html = "./docs" + filePath
 	file = open(html, "r")
 	content = file.read()
 	file.close()
 
 	file = open(html, "w")
-	file.write(content.replace("/_next/static", "./_next/static"))
-	file.write(content.replace("/images", "./images"))
-	file.close()
-
-	txt = "./docs" + filePath + ".txt"
-	file = open(txt, "r")
-	content = file.read()
-	file.close()
-
-	file = open(txt, "w")
-	file.write(content.replace("/_next/static", "./_next/static"))
-	file.write(content.replace("/images", "./images"))
+	file.write(content.replace("/_next/static", "https://sirebutitsunique.github.io/cp-notes/_next/static"))
+	file.write(content.replace("/images", "https://sirebutitsunique.github.io/cp-notes/images"))
 	file.close()
 
 os.rename("./out", "./docs")
 f = open("./docs/.nojekyll", "x")
 rename("/index.html")
+rename("/index.txt")
 rename("/404.html")
 rename("/docs.html")
+rename("/docs.txt")
 rename("/docs/installation.html")
+rename("/docs/installation.txt")
 rename("/docs/mdx.html")
+rename("/docs/mdx.txt")
