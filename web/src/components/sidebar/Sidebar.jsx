@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar(props) {
-	const { loaded, sections, setSections } = props;
+	const { loaded, sections, setSections, fetchPath } = props;
 	const [modalState, setModalState] = useState(false);
 
 	return (
@@ -15,6 +15,7 @@ export default function Sidebar(props) {
 				setModalState={setModalState}
 				sections={sections}
 				setSections={setSections}
+				fetchPath={fetchPath}
 			/>
 
 			<nav className="z-30 overscroll-contain bg-bg-primary min-w-[20rem] w-[20rem] px-12 pt-8 pb-4 overflow-y-scroll fixed h-[calc(100vh-51px)] left-0 top-[51px] bottom-0 border-r border-border text-text-header">

@@ -25,9 +25,6 @@ module.exports = withMDX(nextConfig);
 // Environment Variables
 module.exports = {
 	env: {
-		USERNAME: process.env.USERNAME,
-		PASSWORD: process.env.PASSWORD,
-		ADMIN_ID: process.env.ADMIN_ID,
 	},
 	experimental: {
 		serverActions: true,

@@ -11,7 +11,7 @@ export default function DocLayout({ children }) {
 	const [sidebarLinks, setSidebarLinks] = useState(false);
 
 	useEffect(() => {
-		fetch("/api/fetchDocData", {
+		fetch("/api/fetchExemplarData", {
 			method: "GET",
 		})
 			.then((res) => res.json())
@@ -35,9 +35,9 @@ export default function DocLayout({ children }) {
 			<div>
 				<section className="relative">
 					{sidebarLinks ? (
-						<Sidebar loaded={true} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/docData"}/>
+						<Sidebar loaded={true} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/exemplarData"}/>
 					) : (
-						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/docData"}/>
+						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/exemplarData"}/>
 					)}
 				</section>
 

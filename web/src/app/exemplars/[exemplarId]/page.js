@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 export default function Home() {
 	const url = usePathname();
 	const [content, setContent] = useState("# Loading...");
-	const mdPath = `/data${url}.mdx`;
+	const mdPath = `/exemplars${url}.mdx`;
 
 	useEffect(() => {
 		fetch(mdPath)

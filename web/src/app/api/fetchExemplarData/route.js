@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync, unlinkSync, existsSync } from "fs";
 import { NextResponse } from "next/server";
 import path from "path";
 
-const dataPath = path.join(process.cwd(), "src/app/api/data.json");
+const dataPath = path.join(process.cwd(), "src/app/api/exemplarData.json");
 
 function getMdxPath(fileName) {
-	return path.join(process.cwd(), `public/data/docs/${fileName}.mdx`);
+	return path.join(process.cwd(), `public/data/exemplars/${fileName}.mdx`);
 }
 
 function urlFriendlyTitle(rawTitle) {

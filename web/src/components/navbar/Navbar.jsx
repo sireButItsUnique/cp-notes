@@ -16,12 +16,18 @@ export default function Navbar() {
 					<Link href="/" className="flex flex-row justify-center items-center gap-[0.05rem]">
 						<Image src="/images/logo.png" width="35" height="35" alt="Logo" />
 
-						<span className="font-bold text-xl">ORROSION</span>
+						<span className="font-bold text-xl">OMPETITIVE PROGRAMMING</span>
 					</Link>
 				</div>
 
 				<div className="">
 					<ul className="flex flex-row justify-center items-center gap-8">
+						<li>
+							<Link href="/exemplars/two-sum" className="link animate-underline">
+								Exemplars
+								<span className="text-underline"></span>
+							</Link>
+						</li>
 						<li>
 							<Link href="/docs/installation" className="link animate-underline">
 								Docs
@@ -53,25 +59,7 @@ export default function Navbar() {
 						target="_blank"
 						rel="noreferrer"
 					>
-						Documentation
-						<span className="text-underline"></span>
-					</Link>
-					<Link
-						className="link animate-underline"
-						href="https://github.com/sireButItsUnique/erosion-compiler"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Compiler
-						<span className="text-underline"></span>
-					</Link>
-					<Link
-						className="link animate-underline"
-						href="https://github.com/corrosion-language/sedimentation-assembler"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Assembler
+						Source
 						<span className="text-underline"></span>
 					</Link>
 				</div>

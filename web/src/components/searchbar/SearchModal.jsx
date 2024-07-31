@@ -24,14 +24,15 @@ function getIndividual(regex, size, individual) {
 }
 
 export default function SearchModal(props) {
-	let { modalState, setModalState, sections, setSections } = props;
+	let { modalState, setModalState, sections, setSections, fetchPath } = props;
 
 	const [search, setSearch] = useState("");
 	const [allResults, setAllResults] = useState(false);
 	const [searchResults, setSearchResults] = useState(false);
 
 	useEffect(() => {
-		fetch("/api/data", {
+		console.log("fetching " + fetchPath);
+		fetch("/api/docData", {
 			method: "GET",
 		})
 			.then((res) => res.json())
