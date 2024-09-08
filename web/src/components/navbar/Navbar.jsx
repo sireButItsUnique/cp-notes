@@ -55,7 +55,7 @@ export default function Navbar() {
 				<div className="relative shadow-xl flex flex-col justify-center items-end gap-3 border border-border bg-bg-secondary rounded px-4 py-2">
 					<Link
 						className="link animate-underline"
-						href="https://github.com/pepeworm/corrosion-lang"
+						href="https://github.com/sireButItsUnique/cp-notes"
 						target="_blank"
 						rel="noreferrer"
 					>
