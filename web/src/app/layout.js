@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar.jsx";
 import "@fortawesome/fontawesome-svg-core/styles.css";

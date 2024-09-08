@@ -115,7 +115,7 @@ export default function SearchModal(props) {
 
 														<FontAwesomeIcon
 															icon={faArrowRight}
-															className="text-text-highlight"
+															className="text-[#ba9ffb]"
 														/>
 													</Link>
 												);

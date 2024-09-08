@@ -61,7 +61,7 @@ export default function Sidebar(props) {
 													href={linkHref}
 													className={`${
 														active
-															? "link border-l-2 border-text-highlight"
+															? "link border-l-2 border-[#bda8ef]"
 															: "text-text-footer transition-colors duration-200 hover:text-text-header"
 													} pl-2.5`}
 													onClick={(e) => {

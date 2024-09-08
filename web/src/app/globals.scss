@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-$text-link: #aef39e;
-$text-highlight: #7ad367;
+$text-link: #bda8ef;
+$text-highlight: #ba9ffb;
 $text-header: #ffffffe6;
 $text-body: #ffffff99;
 $text-footer: #98a3b3;
 $text-danger: #f87171;
-$bg-primary: #111d25;
-$bg-secondary: #1c2830;
-$bg-tertiary: #202c34;
+$bg-primary: #121212;
+$bg-secondary: #1a1625;
+$bg-tertiary: #2f2b3a;
 $border: #ffffff0d;
 $black: #000;
 $blue: #2c89e0;
 
 @mixin text-gradient() {
 	background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-	--tw-gradient-from: #7ad367 var(--tw-gradient-from-position);
-	--tw-gradient-to: rgb(122 211 103 / 0) var(--tw-gradient-to-position);
+	--tw-gradient-from: #5e43f3 var(--tw-gradient-from-position);
+	--tw-gradient-to: #ba9ffb var(--tw-gradient-to-position);
 	--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-	--tw-gradient-to: rgb(174 243 158 / 0) var(--tw-gradient-to-position);
-	--tw-gradient-stops: var(--tw-gradient-from), #aef39e var(--tw-gradient-via-position), var(--tw-gradient-to);
-	--tw-gradient-to: #7dd3fc var(--tw-gradient-to-position);
+	--tw-gradient-to: #5e43f3 var(--tw-gradient-to-position);
+	--tw-gradient-stops: var(--tw-gradient-from), #ba9ffb var(--tw-gradient-via-position), var(--tw-gradient-to);
+	--tw-gradient-to: #ba9ffb var(--tw-gradient-to-position);
 	background-clip: text;
 	color: transparent;
 }

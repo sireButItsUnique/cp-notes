@@ -16,7 +16,7 @@ export default function Navbar() {
 					<Link href="/" className="flex flex-row justify-center items-center gap-[0.05rem]">
 						<Image src="/images/logo.png" width="35" height="35" alt="Logo" />
 
-						<span className="font-bold text-xl">OMPETITIVE PROGRAMMING</span>
+						<span className="font-bold text-xl"></span>
 					</Link>
 				</div>
 
