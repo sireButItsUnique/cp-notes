@@ -35,9 +35,9 @@ export default function DocLayout({ children }) {
 			<div>
 				<section className="relative">
 					{sidebarLinks ? (
-						<Sidebar loaded={true} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/docData"}/>
+						<Sidebar loaded={true} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/fetchDocData"}/>
 					) : (
-						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/docData"}/>
+						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/fetchDocData"}/>
 					)}
 				</section>
 

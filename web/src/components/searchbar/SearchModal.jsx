@@ -32,11 +32,12 @@ export default function SearchModal(props) {
 
 	useEffect(() => {
 		console.log("fetching " + fetchPath);
-		fetch("/api/docData", {
+		fetch(fetchPath, {
 			method: "GET",
 		})
 			.then((res) => res.json())
 			.then((text) => {
+				console.log(text)
 				setAllResults(text);
 				setSearchResults(text);
 			});
