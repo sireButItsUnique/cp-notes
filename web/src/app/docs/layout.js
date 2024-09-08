@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import Sidebar from "@/components/sidebar/Sidebar.jsx";
+import Blur from "@/components/blur/blur";
 
 export default function DocLayout({ children }) {
 	const url = usePathname();
@@ -40,14 +40,9 @@ export default function DocLayout({ children }) {
 						<Sidebar loaded={false} sections={sidebarLinks} setSections={setSidebarLinks} fetchPath={"/api/fetchDocData"}/>
 					)}
 				</section>
-
+					
 				<section className="relative">
-					<Image
-						className="absolute blur-3xl right-0 top-[5rem] z-40"
-						src="/images/logo_blur.png"
-						width="50"
-						height="50"
-					/>
+					<Blur />
 					{children}
 				</section>
 			</div>

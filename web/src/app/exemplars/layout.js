@@ -2,12 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import Sidebar from "@/components/sidebar/Sidebar.jsx";
+import Blur from "@/components/blur/blur";
 
 export default function DocLayout({ children }) {
 	const url = usePathname();
 	const page = "/" + url.match(/([^\/]*)$/)[1];
+	const blurPos = [
+		["5rem", "5rem"],
+		["2rem", "20rem"],
+		["60rem", "0rem"],
+		["10rem", "25rem"],
+		["30rem", "20rem"]
+	];
 	const [sidebarLinks, setSidebarLinks] = useState(false);
 
 	useEffect(() => {
@@ -42,12 +49,7 @@ export default function DocLayout({ children }) {
 				</section>
 
 				<section className="relative">
-					<Image
-						className="absolute blur-3xl right-0 top-[5rem] z-40"
-						src="/images/logo_blur.png"
-						width="50"
-						height="50"
-					/>
+					<Blur />
 					{children}
 				</section>
 			</div>

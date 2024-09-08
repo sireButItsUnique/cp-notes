@@ -8,7 +8,7 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Corrosion Documentation",
+	title: "CP Notes",
 	description: "Documentation and usage for the Corrosion Language",
 };
 

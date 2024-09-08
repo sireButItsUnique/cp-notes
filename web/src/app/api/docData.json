@@ -1,7 +1,6 @@
 {
     "Getting Started":[
-        ["Installation","/docs/installation",false],
-        ["Environment","/docs/environment",false],
+        ["Environment","/docs/environment",true],
         ["Template/Boilerplate","/docs/template",false]
     ],
     "Algorithm Types":[
