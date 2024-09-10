@@ -23,7 +23,7 @@ export default function Navbar() {
 				<div className="">
 					<ul className="flex flex-row justify-center items-center gap-8">
 						<li>
-							<Link href="/exemplars/two-sum" className="link animate-underline">
+							<Link href="/exemplars/24s3" className="link animate-underline">
 								Exemplars
 								<span className="text-underline"></span>
 							</Link>

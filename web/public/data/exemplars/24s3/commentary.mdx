@@ -1,1 +1,24 @@
-### I didnt like this problem bc i was bad.
+> ### Link to the problem [here](https://dmoj.ca/problem/ccc24s3)
+
+&nbsp;
+## Observations
+- Numbers cannot *"cross over"* one another
+- Order of swipes matter, even if they don't have to cross over they must move *"out of the way"* 
+- You are allowed `n` swipes, one for each index
+
+## Approach
+- Greedy approach; make sure every index meets criteria from left to right
+- Use two pointers to keep track of position in both `A` and `B`
+- Increment `B` index for iteration
+- The `A` pointer should continue moving right until it finds the number which matches the `B` index
+    - Swipe accordingly so that the number of the `A` pointer spreads to the position of the `B` pointer
+- Because numbers cannot cross over each other, if at any point there is no matches to the right of the `A` pointer the task is impossible
+- Right swipes should be mader right to left, and left swipes vise versa
+
+## Annoying Testcases
+The swipe ordering issue:
+```
+4
+0 1 1 0
+0 0 0 1
+```

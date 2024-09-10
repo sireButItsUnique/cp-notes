@@ -27,13 +27,21 @@ $blue: #2c89e0;
 	color: transparent;
 }
 
-.swap {
+.swapA {
 	transition: transform 0.4s ease-out;
-	transform: translateY(3.35rem);
+	transform: translateY(3.1rem);
 }
-.swapRev {
+.swapARev {
 	transition: transform 0.4s ease-out;
-	transform: translateY(-3.35rem);
+	transform: translateY(-0.7rem);
+}
+.swapB {
+	transition: transform 0.4s ease-out;
+	transform: translateY(-3.1rem);
+}
+.swapBRev {
+	transition: transform 0.4s ease-out;
+	transform: translateY(0.7rem);
 }
 
 .material-bubble {
@@ -52,7 +60,7 @@ $blue: #2c89e0;
 	width: 100%;
 	height: 100%;
 	border: 3px solid #1b1b20;
-	transition: opacity 0.3s, border 0.3s;
+	transition: opacity 0.4s, border 0.3s;
 }
 .material-bubble:hover::before {
 	opacity: 0;
@@ -70,7 +78,7 @@ $blue: #2c89e0;
 	transform: translate(-10px, -70px) scale(0.1);
 	opacity: 0;
 	z-index: -1;
-	transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+	transition: transform 0.6s, opacity 0.3s, background-color 0.3s;
 }
 .material-bubble:hover::after {
 	opacity: 1;
@@ -225,6 +233,10 @@ dialog {
 
 	li {
 		color: $text-body;
+	}
+
+	em {
+		color: #a688fa;
 	}
 }
 

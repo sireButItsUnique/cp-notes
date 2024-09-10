@@ -18,6 +18,7 @@ export default function Home() {
 	const codePath = `/data${url}/code.cpp`;
 	const [showCode, setShowCode] = useState(false);
 
+	// getting all pages from data
 	useEffect(() => {
 		fetch(headerPath)
 			.then((res) => res.text())
@@ -33,7 +34,6 @@ export default function Home() {
 			.then((res) => res.text())
 			.then((text) => {
 				setCommentary(text);
-				Prism.highlightAll();
 			});
 		fetch(codePath)
 		.then((res) => res.text())
@@ -46,18 +46,19 @@ export default function Home() {
 
 	return (
 		<section className="pt-14 pb-12 pl-[24.5rem] pr-20">
-		
+			
+			{/*Header text + Buttons*/}
 			<div className="inline flex justify-between">
 				<div className="text-left">
 					<ReactMarkdown className="markdown" children={header} />
 				</div>
 				<div className="justify-end flex-none content-center">
-					<button className={`${showCode ? "swap": ""} material-bubble w-full mb-[1rem] text-text-header block border border-text-header rounded py-1.5 px-3`} onClick={() => {
+					<button className={`${showCode ? "swapA": "swapARev"} w-full material-bubble text-text-header block border border-text-header rounded py-1.5 px-3`} onClick={() => {
 						setShowCode(false);
 					}}>
 						Commentary
 					</button>
-					<button className={`${showCode ? "swapRev": ""} material-bubble w-full mt-[1rem] text-text-header block border border-text-header rounded py-1.5 px-3`} onClick={() => {
+					<button className={`${showCode ? "swapB": "swapBRev"} w-full material-bubble text-text-header block border border-text-header rounded py-1.5 px-3`} onClick={() => {
 						setShowCode(true);
 					}}>
 						Code
@@ -65,6 +66,7 @@ export default function Home() {
 				</div>
 			</div>
 			
+			{/*Content*/}
 			{!showCode && <div className="text-left">
 				<ReactMarkdown className="markdown" children={commentary} />
 			</div>}
@@ -72,6 +74,10 @@ export default function Home() {
 				<code className="language-cpp border-none">
 					{code}
 				</code>
+				{ // funny race condition
+				setTimeout(() => {
+					Prism.highlightAll()
+				})}
 			</pre>}
 		</section>
 	);
