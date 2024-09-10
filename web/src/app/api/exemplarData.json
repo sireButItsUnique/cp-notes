@@ -2,7 +2,7 @@
     "CCC":[
         ["2024-S1","/exemplars/24s1",false],
         ["2024-S2","/exemplars/24s2",false],
-        ["2024-S3","/exemplars/24s3",false]
+        ["2024-S3","/exemplars/24s3",true]
     ],
     "Leetcode":[
         ["doc IV","/exemplars/doc4",false],
