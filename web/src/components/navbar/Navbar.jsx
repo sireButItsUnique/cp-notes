@@ -29,7 +29,7 @@ export default function Navbar() {
 							</Link>
 						</li>
 						<li>
-							<Link href="/docs/installation" className="link animate-underline">
+							<Link href="/docs/environment" className="link animate-underline">
 								Docs
 								<span className="text-underline"></span>
 							</Link>
