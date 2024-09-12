@@ -15,8 +15,8 @@
         ["Monotonic Stack","/docs/monotonicstack",false]
     ],
     "Useful Data Structures": [
-        ["Heap","/docs/twopointers",false],
-        ["Set","/docs/set",false],
+        ["Heap/Priority Queue","/docs/heap",false],
+        ["Set/Multiset","/docs/set",false],
         ["Segtree","/docs/segtree",false],
         ["Difference Array","/docs/differencearray",false]
     ],
