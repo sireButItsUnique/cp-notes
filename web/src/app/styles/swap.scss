@@ -1,16 +1,16 @@
 .swapA {
-	transition: transform 0.4s ease-out;
-	transform: translateY(3.1rem);
+	transition: all 0.4s ease-out;
+	transform: translateY(3.1rem) scale(0.75);
 }
 .swapARev {
-	transition: transform 0.4s ease-out;
-	transform: translateY(-0.7rem);
+	transition: all 0.4s ease-out;
+	transform: translateY(-0.7rem) scale(1.25);
 }
 .swapB {
-	transition: transform 0.4s ease-out;
-	transform: translateY(-3.1rem);
+	transition: all 0.4s ease-out;
+	transform: translateY(-3.1rem) scale(1.25);
 }
 .swapBRev {
-	transition: transform 0.4s ease-out;
-	transform: translateY(0.7rem);
+	transition: all 0.4s ease-out;
+	transform: translateY(0.7rem) scale(0.75); 
 }

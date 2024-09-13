@@ -5,7 +5,7 @@
     ],
     "Algorithm Types":[
         ["Brute Force","/docs/bruteforce",false],
-        ["Greedy","/docs/greedy",false],
+        ["Greedy Algorithm","/docs/greedy",false],
         ["Dynamic Programming","/docs/dynamicprogramming",false]
     ],
     "Common Techniques":[
@@ -18,7 +18,8 @@
         ["Heap/Priority Queue","/docs/heap",false],
         ["Set/Multiset","/docs/set",false],
         ["Segtree","/docs/segtree",false],
-        ["Difference Array","/docs/differencearray",false]
+        ["Difference Array","/docs/differencearray",false],
+        ["Bitmask", "/docs/bitmask", false]
     ],
     "Graph Theory":[
         ["Representing Graphs", "/docs/representinggraphs",false],
@@ -28,7 +29,9 @@
         ["Floyd-Warshall (all pairs)", "/docs/floydwarshall", false]
     ],
     "Number Theory":[
-        ["Permutations", "/docs/permutations",false]
+        ["Permutations", "/docs/permutations",false],
+        ["Modulo Arithmetic", "/docs/modulo", false],
+        ["Xor Operations", "/docs/xor", false]
     ],
     "Niche \"Fuck you\"s": [
         ["Rolling Hash", "/docs/rollinghash",false]

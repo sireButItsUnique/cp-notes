@@ -1,2 +1,38 @@
 Common Techniques > [Prefix Sum](/docs/prefixsum/)
 # Prefix Sum
+---
+## Definition
+A prefix sum creates a separate array where each element at index `i`
+represents the sum of the elements from the `arr[0]` to `arr[i]`.
+This allows for efficient range sum queries: sum from `[l, r]` is equal to `prefix[r] - prefix[l - 1]`
+
+&nbsp;
+
+This structure is applicable not just for sum, but all operations
+which are "reversable". Some examples include:
+* *XOR*, where to query you use `prefix[r] ^ prefix[l - 1]` (note that *XOR* is its own inverse)
+* *MULTIPLY*, where to query yoy use `prefix[r] / prefix[l - 1]`
+
+&nbsp;
+
+## Example
+```c++ 
+// Given data
+vector<int> arr = {2, 4, 6, 8, 10};
+
+// Calculate prefix sum
+vector<int> prefix(arr.size(), arr[0]);
+for (int i = 1; i < arr.size(); i++) {
+    prefix[i] = arr[i];
+    prefix[i] += arr[i - 1];
+}
+
+// To query (e.g. [2, 4])
+prefix[4] - prefix[1];
+```
+
+&nbsp;
+
+## Complexity
+Building: O(n)\
+Querying: O(1)

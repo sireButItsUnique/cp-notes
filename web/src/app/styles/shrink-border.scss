@@ -1,0 +1,62 @@
+$text-link: #bda8ef;
+$text-highlight: #ba9ffb;
+$text-header: #ffffffe6;
+$text-body: #ffffff99;
+$text-footer: #98a3b3;
+$text-danger: #f87171;
+$bg-primary: #121212;
+$bg-secondary: #1a1625;
+$bg-tertiary: #2f2b3a;
+$border: #ffffff0d;
+$black: #000;
+$blue: #2c89e0;
+
+.shrink-border {
+    background-color: transparent;
+    color: $text-link;
+    position: relative;
+    border: none;
+    font-size: 14px;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s;
+    outline: none;
+    border-radius: 3px;
+    margin: 0 4px;
+    padding: 5px 12px;
+    border: 3px solid transparent;
+  }
+  .shrink-border:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: #e6e6e6;
+  }
+  .shrink-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #1b1b20;
+    transition: opacity 0.3s, border 0.3s;
+  }
+  .shrink-border:hover::before {
+    opacity: 0;
+  }
+  .shrink-border::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 3px solid #e6e6e6;
+    opacity: 0;
+    z-index: -1;
+    transform: scaleX(1.1) scaleY(1.3);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .shrink-border:hover::after {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }

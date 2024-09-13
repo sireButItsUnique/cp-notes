@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import Prism from 'prismjs';
+import "./prism-vscode.css";
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp";
 
 export default function Home() {
 	const url = usePathname();
@@ -25,7 +29,14 @@ export default function Home() {
 	return (
 		<section className="pt-14 pb-12 pl-[24.5rem] pr-20">
 			<div className="text-left">
-				<ReactMarkdown className="markdown" children={content} />
+				{
+					<>
+					<ReactMarkdown className="markdown" children={content} />
+					{setTimeout(() => {
+						Prism.highlightAll();
+					})}
+					</>
+				}
 			</div>
 		</section>
 	);
