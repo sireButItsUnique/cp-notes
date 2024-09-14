@@ -7,7 +7,6 @@ import Prism from 'prismjs';
 import "./prism-vscode.css";
 import "prismjs/components/prism-c";
 import "prismjs/components/prism-cpp";
-import Link from "next/link";
 
 export default function Home() {
 	const url = usePathname();

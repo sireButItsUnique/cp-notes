@@ -17,6 +17,9 @@ $blue: #2c89e0;
 		overflow-y: scroll;
 	}
 
+	.span {
+		border-style: none;
+	}
 	h2,
 	h3,
 	strong {
@@ -72,6 +75,8 @@ $blue: #2c89e0;
 
 		code {
 			color: $text-highlight;
+			background-color: rgba(0, 0, 0, 0);
+			border-style: none;
 		}
 	}
 
