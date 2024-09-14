@@ -1,0 +1,16 @@
+> ### Link to the problem [here](https://leetcode.com/problems/candy/)
+
+&nbsp;
+## Observations
+- Kids with lower ratings than both neighbours only need one candy
+- Kids only care about their immediate neighbours
+
+## Approach
+- Greedy approach; start every kids at 1 candy
+- Iterate left to right in `[1, n]`
+    - Give kids with higher ratings than their left neighbour one more than their neighbour
+- Iterate right to left in `[n-1, 0]`
+    - Give kids with higher ratings than their right neighbour one more than their neighbour
+    - Only do so if they currently have less or equal candies than their right neighbour
+- Note after only these two pases we will be done; think of `ratings` as a series of peaks, 
+no conflicts will arise 

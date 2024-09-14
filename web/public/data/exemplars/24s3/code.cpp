@@ -4,10 +4,6 @@ using namespace std;
 #define pii pair<ll, ll>
 ll MOD = 1e9 + 7;
 
-/*
-0 1 1 0
-0 0 0 1
-*/
 ll n;
 stack<pii> rightSwipes;
 queue<pii> leftSwipes;

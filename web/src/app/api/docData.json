@@ -25,7 +25,7 @@
         ["Representing Graphs", "/docs/representinggraphs",false],
         ["DFS & BFS","/docs/dfsbfs",false],
         ["Dijkstra (fast)","/docs/dijkstra",false],
-        ["Bellman Ford (negative edges)","/docs/bellmanford",false],
+        ["Bellman Ford (negative)","/docs/bellmanford",false],
         ["Floyd-Warshall (all pairs)", "/docs/floydwarshall", false]
     ],
     "Number Theory":[
