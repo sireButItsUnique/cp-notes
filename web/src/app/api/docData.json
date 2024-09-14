@@ -31,7 +31,8 @@
     "Number Theory":[
         ["Permutations", "/docs/permutations",false],
         ["Modulo Arithmetic", "/docs/modulo", false],
-        ["Xor Operations", "/docs/xor", false]
+        ["XOR Operations", "/docs/xor", false],
+        ["AND Operations", "/docs/and", false]
     ],
     "Niche \"Fuck you\"s": [
         ["Rolling Hash", "/docs/rollinghash",false]

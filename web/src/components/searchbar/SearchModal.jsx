@@ -92,7 +92,7 @@ export default function SearchModal(props) {
 												return (
 													<Link
 														key={adjResIdx}
-														href={"/docs" + link}
+														href={link}
 														onClick={(e) => {
 															let sectionCpy = {
 																...sections,

@@ -1,0 +1,33 @@
+Number Theory > [AND Operations](/docs/and/)
+# AND Operations
+---
+## Definition
+`AND` is a bitwise operator which will take two pieces of data;
+returning only the bits where the two overlap.
+
+&nbsp;
+
+As such, it is commonly used to check for a single bit in a piece of data. Create a mask
+consiting of a single bit then `AND` the two together; if the bit was 0 you will receieve
+0, otherwise the bitmask will be returned.
+
+&nbsp;
+
+## Example
+<div className="language-cpp">
+```c++ 
+// Given data (10011)
+int number == 19; 
+
+// Create mask (10000)
+int mask = 1 << 4;
+
+// To query (e.g. 5th bit of number, should return 10000)
+number & mask;
+```
+</div>
+
+&nbsp;
+
+## Properties
+- `AND` of two distinct numbers will ALWAYS return a number that is less than both

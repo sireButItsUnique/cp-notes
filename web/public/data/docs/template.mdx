@@ -2,6 +2,55 @@ Getting Started > [Template](/docs/template/)
 # Useful Templates
 ---
 ## Boilerplate
+<div className="language-cpp">
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pii pair<ll, ll>
+ll MOD = 1e9 + 7;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    return 0;
+}
+```
+</div>
 
 &nbsp;
-## DSU
+## Log (Precise)
+<div className="language-cpp">
+```c++
+int logn(double n, int base) {
+    n--;
+    int res = 0;
+    if (n < 0) {
+        return -1;
+    }
+    while (n) {
+        n /= base;
+        res++;
+    }
+    return res;
+}
+```
+</div>
+
+&nbsp;
+## Square Multiply
+<div className="language-cpp">
+```c++
+ll modpow(ll a, ll b) {
+    if (b < 0) return 0;
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = (res * a) % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+```
+</div>

@@ -6,35 +6,32 @@ A prefix sum creates a separate array where each element at index `i`
 represents the sum of the elements from the `arr[0]` to `arr[i]`.
 This allows for efficient range sum queries: sum from `[l, r]` is equal to `prefix[r] - prefix[l - 1]`
 
-&nbsp;
-
+<br/>
 This structure is applicable not just for sum, but all operations
 which are "reversable". Some examples include:
 * *XOR*, where to query you use `prefix[r] ^ prefix[l - 1]` (note that *XOR* is its own inverse)
 * *MULTIPLY*, where to query yoy use `prefix[r] / prefix[l - 1]`
 
-&nbsp;
-
+<br/>
 ## Example
 <div className="language-cpp">
 ```c++ 
 // Given data
 vector<int> arr = {2, 4, 6, 8, 10};
 
-// Calculate prefix sum
+// Calculate prefix sum ([2, 6, 12, 20, 30])
 vector<int> prefix(arr.size(), arr[0]);
 for (int i = 1; i < arr.size(); i++) {
     prefix[i] = arr[i];
     prefix[i] += arr[i - 1];
 }
 
-// To query (e.g. [2, 4])
+// To query (e.g. [2, 4] -> 24)
 prefix[4] - prefix[1];
 ```
 </div>
 
-&nbsp;
-
+<br/>
 ## Complexity
 Building: O(n)\
 Querying: O(1)

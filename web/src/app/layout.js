@@ -1,8 +1,8 @@
-import "./styles/globals.scss";
-import "./styles/markdown.scss";
-import "./styles/material-bubble.scss";
-import "./styles/shrink-border.scss";
-import "./styles/swap.scss";
+import "@/styles/globals.scss";
+import "@/styles/markdown.scss";
+import "@/styles/material-bubble.scss";
+import "@/styles/shrink-border.scss";
+import "@/styles/swap.scss";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar.jsx";
 import "@fortawesome/fontawesome-svg-core/styles.css";

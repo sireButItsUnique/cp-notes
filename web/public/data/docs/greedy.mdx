@@ -1,2 +1,89 @@
 Algorithm Types > [Greedy](/docs/bruteforce/)
 # Greedy Algorithms
+---
+
+## Definition
+A greedy algorithm builds up a solution piece by piece, 
+always choosing the next piece that offers the most immediate benefit. 
+This means the locally optimal choice at each step must 
+1. Be easy to break into smaller sub problems
+2. Eventually lead to the globally optimal solution. Let's call this characteristic *LG OPTIMAL*
+from now on
+
+<br/>
+Thus, a key skill would be to develop an intutition for which problems would be *LG OPTIMAL*.
+In general, problems with this property require that making a suboptimal choice does not lead 
+to different, more optimal choices in the future. When you think this is true, manually do it with the
+test cases to make sure. Then if time permits, try to find counterexamples which 
+would break the algorithm you have in mind. 
+<br />
+Think graphs for example: when negative edge weights are allowed, sometimes it 
+is better to take a longer path in order to reach the negative edge. This is why
+the greedy *Dijkstra* does not work on edges with negative weights; because these
+problems are not *LG OPTIMAL* 
+
+<br />
+## Examples
+Let's use [LeetCode 135. Candy](/exemplars/ltcd135) as a perfect example of pure greedy action.
+
+### Problem
+There are `n` children standing in a line. Each child is assigned a rating value given in the integer array `ratings`.
+You are giving candies to these children subjected to the following requirements:
+
+- Each child must have at least one candy.
+- Children with a higher rating get more candies than their neighbors.
+<br />
+Return the minimum number of candies you need to have to distribute the candies to the children.
+- `n == ratings.length`
+- `1 <= n <= 2 * 104`
+- `0 <= ratings[i] <= 2 * 104`
+
+### Solution
+Immediately we can recognize that since the goal is to cheap out as much as possible, it can be broken
+down into how much can we cheap out on each individual kid. Recall that we should now try to see if the 
+problem is *LG OPTIMAL*, which we can do by testing it on a provided testcase.
+```
+Input: ratings = [1,2,2]
+Output: 4
+```
+We start out by giving everybody only one candy, and go from left to right checking if the kid has a higher
+rating than their neighbor. If they do, all we need to do is give them one more.
+```
+res = [1,1,1] INIT
+res = [1,2,1] i = 1
+res = [1,2,1] i = 2
+```
+It works! Now let's try to think of a testcase where it wouldn't work. What about if a kid has 
+a higher rating than the kid to the right of them?
+```
+Input: ratings = [2,2,1]
+Output: 4
+```
+```
+res = [1,1,1] INIT
+res = [1,1,1] i = 1
+res = [1,1,1] i = 2
+```
+Uh oh, our algorithm outputs 3. However, we can fix this by doing another pass from right to 
+left. Notice how in this case, we were still able to think of a solution. This will **NOT** always be
+the case; if you cannot think of a solution for a long time it might be possible the problem is not 
+*LG OPTIMAL* and you must try a different approach.
+
+### Code
+<div className="language-cpp">
+```cpp
+vector<int> res(ratings.size(), 1);
+for (int i = 1; i < res.size(); i++) {
+    if (ratings[i] > ratings[i - 1] && res[i] <= res[i - 1]) {
+        res[i] = res[i - 1] + 1;
+    }
+}
+for (int i = res.size() - 2; i >= 0; i--) {
+    if (ratings[i] > ratings[i + 1] && res[i] <= res[i + 1]) {
+        res[i] = res[i + 1] + 1;
+    }
+}
+
+return accumulate(res.begin(), res.end(), 0);
+```
+</div>
