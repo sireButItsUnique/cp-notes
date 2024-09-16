@@ -1,41 +1,66 @@
+$text-link: #bda8ef;
+$text-highlight: #ba9ffb;
+$text-header: #ffffffe6;
+$text-body: #ffffff99;
+$text-footer: #98a3b3;
+$text-danger: #f87171;
+$bg-primary: #121212;
+$bg-secondary: #1a1625;
+$bg-tertiary: #2f2b3a;
+$border: #ffffff0d;
+$black: #000;
+$blue: #2c89e0;
+
 .material-bubble {
-	background-color: transparent;
-	overflow: hidden;
-	box-shadow: none;
-}
-.material-bubble:hover {
-	color: #e6e6e6;
-}
-.material-bubble::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: 3px solid #1b1b20;
-	transition: opacity 0.4s, border 0.3s;
-}
-.material-bubble:hover::before {
-	opacity: 0;
-}
-.material-bubble::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 200px;
-	height: 200px;
-	background-color: #46424f;
-	border-color: transparent;
-	border-radius: 50%;
-	transform: translate(-10px, -70px) scale(0.1);
-	opacity: 0;
-	z-index: -1;
-	transition: transform 0.6s, opacity 0.3s, background-color 0.3s;
-}
-.material-bubble:hover::after {
-	opacity: 1;
-	transform-origin: 100px 100px;
-	transform: scale(1) translate(-10px, -70px);
-}
+    background-color: transparent;
+    color: $text-link;
+    position: relative;
+    font-size: 14px;
+    transition: color 0.5s, transform 0.2s, background-color 0.2s;
+    outline: none;
+    border-radius: 3px;
+    margin: 0 4px;
+    padding: 5px 12px;
+    border: 1px;
+	border-style: solid;
+	border-color: $border;
+	border-radius: 0.25rem;
+  }
+  .material-bubble:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: #e6e6e6;
+  }
+  .material-bubble::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	border-radius: 0.25rem;
+    border: 1px solid $border;
+    transition: opacity 0.3s, border 0.3s;
+  }
+  .material-bubble:hover::before {
+    opacity: 0;
+  }
+  .material-bubble::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+	border-radius: 0.25rem;
+    border: 1px solid #e6e6e6;
+    opacity: 0;
+    z-index: -1;
+    transform: scaleX(1.1) scaleY(1.3);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .material-bubble:hover::after {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
