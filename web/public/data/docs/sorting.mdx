@@ -1,0 +1,50 @@
+Common Techniques > [Sorting](/docs/sorting/)
+# Sorting
+---
+## Definition
+Sorting is a method to avoid having `O(n^2)` complexity by needing to compare
+all pairs in an array. This is useful in a couple of senarios: 
+* When you know the optimal solution must only exist between elements which are "close" to each other,
+e.g. [min difference](https://leetcode.com/problems/minimum-time-difference/description/)
+* When used for [greedy](/docs/greedy) algorithms, frequently creating one pass solutions
+* When it allows for a systematic approach combined with some other pattern, e.g. [two pointers](/docs/twopointers) in [Two Sum](https://leetcode.com/problems/two-sum/description/)
+
+<br/>
+Note it also allows for `O(logn)` [binary searching](/docs/binarysearch), but unless you need consequtive searches it's usually better
+to just take the lazy `O(n)` linear search approach.
+
+<br />
+You sort in C++ by using `std::sort(arr.begin(), arr.end())` where `arr` is your array. Note you can sort backwards either via a
+(custom comparator)[https://www.geeksforgeeks.org/how-to-sort-vector-using-custom-comparator-in-cpp/] or using `std::sort(arr.rbegin(), arr.rend())`
+You can also sort only a section of the array by passing the appropriate iterators, such as sorting the first `n` 
+elements using `std::sort(arr.begin(), arr.begin() + n)`
+
+<br/>
+## Example
+<div className="language-cpp">
+```c++ 
+// Given data
+vector<int> arr = {32208, 33647, 50, 32589, 33318, 32208, 33039};
+
+// Sort the data
+sort(arr.begin(), arr.end());
+
+// Sort the data backwards
+sort(arr.rbegin(), arr.rend());
+
+// Sort only the last four elements
+sort(arr.end() - 4, arr.end());
+
+// Sort by their last digit (USE STATIC COMPARATORS!)
+static bool cmp(int& a, int& b) {
+    string astr = to_string(a);
+    string bstr = to_string(b);
+    return astr.back() < bstr.back();
+}
+sort(arr.begin(), arr.end(), cmp);
+```
+</div>
+
+<br/>
+## Complexity
+Building: `O(nlogn)`

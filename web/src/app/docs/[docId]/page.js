@@ -8,7 +8,7 @@ import "./prism-vscode.css";
 import "prismjs/components/prism-c";
 import "prismjs/components/prism-cpp";
 
-export default async function Home() {
+export default function Home() {
 	const url = usePathname();
 	const [content, setContent] = useState("# Loading...");
 	const mdPath = `/data${url}.mdx`;

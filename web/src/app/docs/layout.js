@@ -7,7 +7,7 @@ import Blur from "@/components/blur/blur";
 
 export default function DocLayout({ children }) {
 	const url = usePathname();
-	const page = "/" + url.match(/([^\/]*)$/)[1];
+	const page = "/docs/" + url.match(/([^\/]*)$/)[1];
 	const [sidebarLinks, setSidebarLinks] = useState(false);
 
 	useEffect(() => {
@@ -16,12 +16,16 @@ export default function DocLayout({ children }) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
+				console.log("sidebar: " + page)
 				for (const header in data) {
 					for (let i = 0; i < data[header].length; i++) {
+						console.log(data[header][i][1]);
 						if (data[header][i][1] == page) {
 							data[header][i][2] = true;
-
+							console.log("^ this one right here officer")
 							break;
+						} else {
+							data[header][i][2] = false;
 						}
 					}
 				}

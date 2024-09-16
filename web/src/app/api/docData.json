@@ -1,6 +1,6 @@
 {
     "Getting Started":[
-        ["Environment","/docs/environment",true],
+        ["Environment","/docs/environment",false],
         ["Template/Boilerplate","/docs/template",false]
     ],
     "Algorithm Types":[
@@ -10,6 +10,7 @@
     ],
     "Common Techniques":[
         ["Two Pointers","/docs/twopointers",false],
+        ["Sorting", "/docs/sorting", false],
         ["Binary Search","/docs/binarysearch",false],
         ["Prefix Sum","/docs/prefixsum",false],
         ["Monotonic Stack","/docs/monotonicstack",false]
