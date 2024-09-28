@@ -1,0 +1,22 @@
+Useful Data Structures > [Dequeue](/docs/dequeue/)
+# Dequeue
+---
+## Definition
+A dequeue is a double ended queue, combining a stack with a queue. This means you can `push`
+and `pop` from both the front and the back, which is useful for making it [monotonic](/docs/monotonic)
+as you can create a "monotonic queue".
+
+&nbsp;
+
+Use `std::dequeue`, with the usual
+- `.push_front()`
+- `.push_back()`
+- `.pop_front()`
+- `.pop_back()`
+
+&nbsp;
+
+## Complexity
+- Pop: `O(1)`
+- Push: `O(1)`
+- Read: `O(1)`

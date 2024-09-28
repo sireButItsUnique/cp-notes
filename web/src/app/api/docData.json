@@ -8,19 +8,24 @@
         ["Greedy Algorithm","/docs/greedy",false],
         ["Dynamic Programming","/docs/dynamicprogramming",false]
     ],
+    "DP Techniques": [
+        ["Sliding Window Trans", "/docs/slidingwindowtransition", false],
+        ["Prefix Sum Trans", "/docs/prefixsumtransition", false]
+    ],
     "Common Techniques":[
         ["Two Pointers","/docs/twopointers",false],
         ["Sorting", "/docs/sorting", false],
         ["Binary Search","/docs/binarysearch",false],
         ["Prefix Sum","/docs/prefixsum",false],
-        ["Monotonic Stack","/docs/monotonicstack",false]
+        ["Monotonic Push & Pop","/docs/monotonic",false]
     ],
     "Useful Data Structures": [
         ["Heap/Priority Queue","/docs/heap",false],
         ["Set/Multiset","/docs/set",false],
         ["Segtree","/docs/segtree",false],
         ["Difference Array","/docs/differencearray",false],
-        ["Bitmask", "/docs/bitmask", false]
+        ["Bitmask", "/docs/bitmask", false],
+        ["Dequeue", "/docs/dequeue", false]
     ],
     "Graph Theory":[
         ["Representing Graphs", "/docs/representinggraphs",false],

@@ -1,0 +1,52 @@
+Common Techniques > [Monotonic](/docs/monotonic/)
+# Monotonic Data Structures
+---
+## Definition
+Monotonic data structures, such as monotonic stacks and monotonic deques, are 
+data structures that maintain elements in a specific order. They allow for efficient 
+retrieval of minimum or maximum values, making them particularly useful in problems involving 
+sliding windows, nearest smaller/larger elements.
+
+<br/>
+
+Whenever a new element is added, steps must be taken to ensure the structure is still monotonic.
+For verbosity purposes, the following example will be for a `min` stack/queue:
+1. Popping
+    - While the lastest element added is bigger *(or equal in some cases)* to your value
+    - Pop the latest element; `pop` for stack, `pop_back` for dequeue
+2. Pushing
+    - Push your new value. It is guranteed to be either the only element or larger than its predecessor
+
+## Example
+To keep track of max in sliding window:
+<div className="language-cpp">
+```c++ 
+// Given data
+vector<int> arr = {1, 3, -1, -3, 5, 3, 6, 7};
+int k = 3;
+vector<int> result;
+deque<int> dq;
+
+for (int i = 0; i < arr.size(); i++) {
+    // Remove elements outside the window
+    if (!dq.empty() && dq.front() <= i - k) {
+        dq.pop_front();
+    }
+    
+    // Maintain elements in decreasing order in the deque
+    while (!dq.empty() && arr[dq.back()] < arr[i]) {
+        dq.pop_back();
+    }
+    
+    dq.push_back(i); // Add current index to the deque
+
+    // Store the maximum for the current window
+    result.push_back(arr[dq.front()]); // Front is the maximum
+}
+```
+</div>
+
+<br/>
+## Complexity
+Building: `O(n)`\
+Querying: `O(1)`

@@ -1,0 +1,97 @@
+DP Techniques > [Sliding Window Trans](/docs/slidingwindowtransition/)
+# Dynamic Programming Transitions Using Sliding Window
+---
+## Definition
+A common optimization in DP problems is the sliding window technique, which allows for efficient queries 
+over a subset of elements.
+
+&nbsp;
+
+## Explaination
+Many times the transition from `dp[i][j]` will require information from the last `dp[i-1][j-k]` to `dp[i-1][j]` for
+some value `k`, either variable or constant. A naive method would require recalculating the value from [j-k, j] every
+time, making the transition `O(n)`. However, this means all the stuff in the middle is being re calculated for no reason.
+This is what sliding window takes advantage of:
+- When transitioning from `dp[i][j]` to `dp[i][j+1]`, slide ptr2 over by one
+- Slide ptr1 over accordingly such that the winow does not cover irrelevant values
+- Thus, only the ends of the window are re calculated: each idx is processed exactly once, thus overall we have `O(1)` transitions
+
+&nbsp;
+
+A common archetype is to use the min/max within the window. For this, use a [monotonic](/docs/monotonic) dequeue.
+
+&nbsp;
+
+## Example
+Let's use [hopscotch](https://dmoj.ca/problem/hopscotch2) as an example.
+
+### Problem 
+In this game, a row of stones conveniently numbered `1` to `N` (inclusive) are set in a pool of lava. 
+The stones are very hot. We must jump from the start (i = 0) to the other side (i > `N`), but we can only jump at most 
+`K` stones forward at a time. Fortunately, we have a pair of cooling boots that can cool any stone to **0**
+degrees. However, the boots require one unit of power per degree cooled! Can you help us find the minimum 
+units of power required to jump to the other side of the lava pool?
+
+&nbsp;
+
+We can only walk on stones that are **0** degrees.
+
+&nbsp;
+
+### Constraints
+![SlidingTransConstraints](/images/slidingtransconstraints.png)
+
+### Solution
+We can set up `dp` as `dp[i]`, where i is the minimum power required to reach stone i. 
+Since we can jump `K` stones at a time, the sliding window should span from `K` stones behind
+to the stone directly behind i. We must query the minimum from this window, as this would result in 
+the minimum power to jump from the start to `i`. Do this with a (monotonic)[/docs/monotonic] dequeue.
+
+<div className="language-cpp">
+```c++ 
+// sliding window dp
+for (int i = k; i < n; i++) {
+
+    // if its more than k ago it wont make the jump
+    while (minDq.front().second < i - k) {
+        minDq.pop_front();
+    }
+
+    // choose jump
+    dp[i] = {minDq.front().first + dp[i].first, minDq.front().second};
+
+    // push cur stone
+    while (minDq.size() && minDq.back().first >= dp[i].first) {
+        minDq.pop_back();
+    }
+    minDq.push_back({dp[i].first, i});
+}
+```
+</div>
+
+Then, we simply choose the lowest as the sliding window reaches the end.
+Note that it covers the last `K` elements since these are the elements we can make the final jump from. 
+Backtrack to see the full path, which was each choice we made along the way.
+
+<div className="language-cpp">
+```c++ 
+// only jump from last k stones
+while (minDq.front().second < n - k) {
+    minDq.pop_front();
+}
+cout << minDq.front().first << endl;
+
+// back track to find indicies
+stack<ll> st;
+ll cur = minDq.front().second;
+while (~dp[cur].second) {
+    st.push(cur); 
+    cur = dp[cur].second;
+}
+st.push(cur);
+while (st.size()) {
+    cout << (st.top() + 1) << " ";
+    st.pop();
+}
+```
+</div>
