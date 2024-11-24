@@ -2,3 +2,62 @@ Common Techniques > [Binary Search](/docs/binarysearch/)
 # Binary Search
 ---
 *"Binary search isn't an algorithm, it's a mindset"* -Winston Churchill
+
+## Definition
+Binary search is used to find the position of a target value within a sorted search space. 
+It works by repeatedly dividing the search interval in half. 
+If the target value must less than the middle element, the search continues in the lower half; otherwise, it continues in the upper half.
+
+&nbsp;
+
+Usually we think of binary search as on a sorted array to find the index of an element. However, 
+its principles can be applied to a variety of problems:
+- We do not necessarily need a sorted array, more a **range of possible answers**
+- Whenever we test the candidate answer, it must be possible to determine whether the actual answer is larger or smaller 
+
+&nbsp;
+
+Thus, binary search is a common way to solve **optimization** (min/max given certain requirements) questions as we can simply
+test the range of answers. This is because you either must find the *"valleys & peaks"*, or because it's a *"price is right"*
+sitiation where you must find the min/max without breaking certain constraints.
+
+## Tricks
+**Subset Mapping**: Binary search can work over continuous values or sparse sets. 
+For instance, you can binary search on a map of a continuous range [0, n] to specific values.
+An example would be [vmss7wc15c2p2](/exemplars/vmss7wc15c2p2) <br/>
+**Floating-Point**: For problems requiring precision, 
+binary search can narrow a continuous range (e.g., [0.0, 1.0]) until a satisfactory error margin is achieved.
+
+## Example
+<div className="language-cpp">
+```c++ 
+// Given data
+vector<int> arr = {32208, 33647, 50, 32589, 33318, 32208, 33039};
+
+// Sort the data
+sort(arr.begin(), arr.end());
+
+// Binary search to find largest element below 100
+int lower = 0, upper = arr.size() - 1;
+int res = 0;
+while (lower < uppper) {
+    int mid = (lower + upper) / 2;
+    
+    // Answer MUST be lower since we've "gone bust"
+    if (arr[mid] >= 100) {
+        upper = mid;
+    }
+
+    // There's a chance we find something bigger, keep going
+    else {
+        res = max(res, arr[mid]) // Since it's a valid answer, remember to update res!
+        lower = mid + 1;
+    }  
+}
+```
+</div>
+
+<br/>
+## Complexity
+Sorting: `O(nlogn)` <br/>
+Searching: `O(logn)`

@@ -1,0 +1,165 @@
+Common Techniques > [String Hashing](/docs/stringhashing/)
+# String Hashing
+---
+
+## Definition  
+String hashing is a technique that converts a string into a fixed-size numerical value (a hash) while preserving the identifiability of
+the string. By preprocessing strings into numerical representations, it allows us to compare it and any of its substrings
+in `O(1)` time instead of the usual `O(n)` to compare strings 
+
+The hash function must ensure that:  
+1. **Efficiency**: Computing the hash value is quick. Once you hash the large string, all substring hashes can be determined in `O(1)`
+2. **Collision Handling**: Ideally, each strings map to its own hashe, but since we only have 64 bits to work with just slap a mod on and hope for the best  
+
+&nbsp;
+
+The hash for a string is computed by treating it as a polynomial in a chosen `BASE`, typically 
+combined with a large prime `MOD`:
+<div className="language-cpp">
+```cpp
+hash[i] = s[0] * pow(BASE, i) + s[1] * pow(BASE, i - 1) + ... + s[i] * pow(BASE, i - i);
+hash[i] %= MOD;
+```
+</div>
+
+<table>
+  <tr>
+    <th>a</th>
+    <th>b</th>
+    <th>c</th>
+    <th>b</th>
+  </tr>
+  <tr>
+    <td>i=0</td>
+    <td>i=1</td>
+    <td>i=2</td>
+    <td>i=3</td>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>ax + b</td>
+    <td>ax^2 + bx + c</td>
+    <td>ax^3 + bx^2 + cx + b</td>
+  </tr>
+</table>
+
+&nbsp;  
+
+## Uses  
+**Palindrome Detection**:  
+   - Compute hashes for prefixes and suffixes of the string and compare to check for mirrored properties efficiently.  
+   - Useful in dynamic programming solutions for longest palindromic substrings.  
+
+**String Matching**:  
+   - Instead of matching character-by-character, hash values are compared.  
+
+**String Counting**:  
+   - Insert hashes into a set to count number of unique strings, if you cannot directly insert the string since it would TLE.
+
+&nbsp;  
+
+## Tricks  
+- **Rolling Hash**: Compute the hash incrementally for overlapping substrings:  
+   If the hash for substring [i, j] is known, the hash for [i+1, j+1] can be derived in O(1).  
+- **Double Hashing for Accuracy**: By using two independent hash functions, collisions are virtually eliminated. 
+- **Reverse Hashing**: Compute hashes for the reverse of the string to easily check for palindromic properties.  
+
+&nbsp;  
+
+## Implementation
+**Note:** do NOT use unsigned, allow hashes to go negative then add `MOD` till it's positive before hashing <br/>
+Credits to Kevin (fuck ccc20s3) 
+<div className="language-cpp">
+```c++ 
+/***
+GENERAL HASHING 
+***/
+void calcHashPowers(vi& powers) {
+    powers[0] = 1;
+    for (int i = 1; i < powers.size(); i++) {
+		powers[i] = (powers[i - 1] * BASE) % MOD;
+	}
+}
+
+void strHash(vi& res, string& s) {
+    res = vi(s.size(), s[0] - 'a');
+    for (int i = 1; i < s.size(); i++) {
+        res[i] = (res[i - 1] * BASE + (s[i] - 'a')) % MOD;
+    }
+}
+
+ll substrHash(vi& strHash, int left, int right) {
+    if (!left) {
+        return strHash[right];
+    }
+    ll res = (strHash[right] - ((strHash[left - 1] * powers[right - left + 1]) % MOD) + MOD) % MOD;
+    return res;
+}
+
+/*** 
+FOR FIXED SUBSTRING SIZE HASHING
+***/
+void strRollHash(vi& res, string& s, int windowSize) {
+    res = vi(s.size() - windowSize + 1);
+
+    int hash = 0;
+    for (int i = 0; i < windowSize; i++) {
+        hash *= BASE;
+        hash %= MOD;
+        hash += (s[i] - 'a' + 1);
+    }
+    res[0] = hash;
+
+    for (int i = windowSize; i < s.size(); i++) {
+        hash -= powers[windowSize - 1] * (s[i - windowSize] - 'a' + 1);
+        while (hash < 0) {
+            hash += MOD;
+        }
+        hash *= BASE;
+        hash %= MOD;
+        hash += (s[i] - 'a' + 1);
+
+        res[i - windowSize + 1] = hash;
+    }
+}
+
+/***
+FOR PALINDROMES
+***/
+void preHash(vi& res, string& s) {
+    res = vi(s.size(), s[0] - 'A' + 1);
+    for (int i = 1; i < s.size(); i++) {
+        res[i] = (res[i - 1] * BASE + (s[i] - 'A' + 1));
+    }
+}
+
+void sufHash(vi& res, string& s) {
+    res = vi(s.size(), s.back() - 'A' + 1);
+    for (int i = s.size() - 2; i >= 0; i--) {
+        res[i] = (res[i + 1] * BASE + (s[i] - 'A' + 1));
+    }
+}
+
+ll subPreHash(vi& strHash, int left, int right) {
+    if (!left) {
+        return strHash[right];
+    }
+    ll res = (strHash[right] - ((strHash[left - 1] * powers[right - left + 1])));
+    return res;
+}
+
+ll subSufHash(vi& strHash, int left, int right) {
+    if (right == strHash.size() - 1) {
+        return strHash[left];
+    }
+    ll res = (strHash[left] - ((strHash[right + 1] * powers[(right - left + 1)])));
+    return res;
+}
+```
+</div>
+
+<br/>
+## Complexity
+Building: `O(n)` <br/>
+Comparison: `O(1)` <br/>
+Substring: `O(1)`

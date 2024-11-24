@@ -1,0 +1,36 @@
+Graph Theory > [Tree Tricks](/docs/trees/)
+# Tree Tricks
+---
+## Definition  
+A tree is a connected, acyclic graph with `n` nodes and `n - 1` edges. 
+This means that from every node to every other node there is exactly one path.
+In directed trees, we call the node with no parents the *root* whilst the nodes
+with no children are called *leaf*
+
+&nbsp;
+
+Because of how easy it is to traverse, it is sometimes valid to create an 
+*Minimum Spanning Tree* using [DSU](/docs/dsu) to calculate answers
+
+&nbsp;  
+
+## Concepts
+The diameter of a tree is the longest path between any two nodes. To find it,
+1. Start at any node `u` and perform a DFS to find the farthest node `v` from `u`  
+2. Perform another DFS starting from `v` to find the farthest node `w` from `v`  
+3. The distance between `v` and `w` must be diameter.  
+<br/>
+*The implementation is left as an excerise to the reader.
+
+### Depth
+The depth of a tree is the longest path from the root to any leaf node. To find it,
+1. Start at node root and traverse down tree (dfs/bfs both are fine)
+2. Update with `depth = max(depth, curDepth)`
+
+### Traversal
+Given the properties of trees, traversal is efficient to calculate:
+1. Single Path Property: By definition, there is **exactly one unique path** between any two nodes and thus simply use DFS.  
+2. Complete Tree Traversal:  
+   - To traverse the entire tree and **return** to the starting node: `dist = 2n`
+   - To traverse the entire tree starting from an **ideal node** (lowest dist): `dist = 2n - diameter`
+   - To traverse the entire tree starting from the **root**: `dist = 2n - depth`

@@ -1,0 +1,32 @@
+Number Theory > [Factorial Arithmetic](/docs/factorial/)
+# Factorial Arithmetic
+---
+## Definition
+`!` is an operator seen in some math type problems. If you don't know what
+factorial is, go read a book.
+
+&nbsp;
+
+We almost never want to actually calculate `n!` in a problem since you need unrealistically
+large integers to represent it, thus we usually loop through all of its multiplicators and apply properties.
+For example, to check how many trailing 0s there are in `n!`, we could naively loop from 1 to `n` and count the
+factors of 5. The more efficient way is shown below.
+
+&nbsp;
+
+## Example
+<div className="language-cpp">
+```c++ 
+// To count number of 5s in n!
+int res = 0;
+for (int i = 5; n / i; i *= 5) {
+    res += (n / i);
+}
+```
+</div>
+
+&nbsp;
+
+## Properties
+- `n!` Can only be calculated in `O(n)` time
+- You can count the number of factors in `n!` with a for loop

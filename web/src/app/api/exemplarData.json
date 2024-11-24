@@ -4,5 +4,8 @@
     ],
     "Leetcode":[
         ["135 - Candy","/exemplars/ltcd135",false]
+    ],
+    "DMOJ": [
+        ["4 Nations, 1 Secret", "/exemplars/vmss7wc15c2p2", false]
     ]
 }

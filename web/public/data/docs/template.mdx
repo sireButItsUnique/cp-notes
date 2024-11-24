@@ -7,10 +7,15 @@ Getting Started > [Template](/docs/template/)
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define pii pair<ll, ll>
-#define vi vector<ll>
+#define pii pair<int, int>  
+#define pll pair<ll, ll>
+#define vi vector<int>
+#define vl vector<ll>
+#define vs vector<string>
+#define vb vector<bool>
 #define bitcnt __builtin_popcount
 ll MOD = 1e9 + 7;
+ll BASE = 31;
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -54,5 +59,247 @@ ll modpow(ll a, ll b) {
     }
     return res;
 }
+```
+</div>
+
+&nbsp;
+## String Hashing
+<div className="language-cpp">
+```c++
+/***
+GENERAL HASHING 
+***/
+void calcHashPowers(vi& powers) {
+    powers[0] = 1;
+    for (int i = 1; i < powers.size(); i++) {
+		powers[i] = (powers[i - 1] * BASE) % MOD;
+	}
+}
+
+void strHash(vi& res, string& s) {
+    res = vi(s.size(), s[0] - 'a');
+    for (int i = 1; i < s.size(); i++) {
+        res[i] = (res[i - 1] * BASE + (s[i] - 'a')) % MOD;
+    }
+}
+
+ll substrHash(vi& strHash, int left, int right) {
+    if (!left) {
+        return strHash[right];
+    }
+    ll res = (strHash[right] - ((strHash[left - 1] * powers[right - left + 1]) % MOD) + MOD) % MOD;
+    return res;
+}
+
+/*** 
+FOR FIXED SUBSTRING SIZE HASHING
+***/
+void strRollHash(vi& res, string& s, int windowSize) {
+    res = vi(s.size() - windowSize + 1);
+
+    int hash = 0;
+    for (int i = 0; i < windowSize; i++) {
+        hash *= BASE;
+        hash %= MOD;
+        hash += (s[i] - 'a' + 1);
+    }
+    res[0] = hash;
+
+    for (int i = windowSize; i < s.size(); i++) {
+        hash -= powers[windowSize - 1] * (s[i - windowSize] - 'a' + 1);
+        while (hash < 0) {
+            hash += MOD;
+        }
+        hash *= BASE;
+        hash %= MOD;
+        hash += (s[i] - 'a' + 1);
+
+        res[i - windowSize + 1] = hash;
+    }
+}
+
+/***
+FOR PALINDROMES
+***/
+void preHash(vi& res, string& s) {
+    res = vi(s.size(), s[0] - 'A' + 1);
+    for (int i = 1; i < s.size(); i++) {
+        res[i] = (res[i - 1] * BASE + (s[i] - 'A' + 1));
+    }
+}
+
+void sufHash(vi& res, string& s) {
+    res = vi(s.size(), s.back() - 'A' + 1);
+    for (int i = s.size() - 2; i >= 0; i--) {
+        res[i] = (res[i + 1] * BASE + (s[i] - 'A' + 1));
+    }
+}
+
+ll subPreHash(vi& strHash, int left, int right) {
+    if (!left) {
+        return strHash[right];
+    }
+    ll res = (strHash[right] - ((strHash[left - 1] * powers[right - left + 1])));
+    return res;
+}
+
+ll subSufHash(vi& strHash, int left, int right) {
+    if (right == strHash.size() - 1) {
+        return strHash[left];
+    }
+    ll res = (strHash[left] - ((strHash[right + 1] * powers[(right - left + 1)])));
+    return res;
+}
+```
+</div>
+
+&nbsp;
+## Fenwick Tree
+<div className="language-cpp">
+```c++
+/*** 
+DO NOT USE IDX 0 INSIDE BIT TREES! ADD ONE IF NECESSARY 
+***/
+void addAtBIT(vi& BIT, int idx, ll diff) {
+    for (int i = idx; i < BIT.size(); i += (i & -i)) {
+        BIT[i] += diff;
+    }
+}
+
+ll getPrefixAtBIT(vi& BIT, int idx) {
+    ll res = 0;
+    for (int i = idx; i > 0; i -= (i & -i)) {
+		res += BIT[i];
+	}
+    return res;
+}
+
+/*** 
+CAN ONLY DO PREFIX -> NO GETTING SEGMENTS
+***/
+ll MAX_ARR_LEN = 1e5 + 5;
+void setAtBIT(vl& BIT, int idx, ll diff) {
+    while (idx <= MAX_ARR_LEN) {
+        BIT[idx] = max(BIT[idx], diff);
+        idx += (-idx & idx);
+    }
+}
+
+ll getMaxAtBIT(vl& BIT, int idx) {
+    ll res = 0;
+    while (idx > 0) {
+        res = max(res, BIT[idx]);
+        idx -= (-idx & idx);
+    }
+    return res;
+}
+
+/*** 
+2D -> DONT USE ROW OR COL 0
+***/
+void addAt2DBIT(vector<vi>& BIT, int row, int col, ll diff) {
+    for (int i = row; i < BIT.size(); i += (i & -i)) {
+        for (int j = col; j < BIT[0].size(); j += (j & -j)) {
+            BIT[i][j] += diff;
+        }
+    }
+}
+
+ll getPrefixAt2DBIT(vector<vi>& BIT, int row, int col) {
+    ll res = 0;
+    for (int i = row; i > 0; i -= (i & -i)) {
+		for(int j = col; j > 0; j -= (j &-j)) {
+			res += BIT[i][j];
+		}
+	}
+    return res;
+}
+
+ll getRectAt2DBIT(vector<vi>& BIT, int r1, int r2, int c1, int c2) {
+    return getPrefixAt2DBIT(BIT, r2, c2) - getPrefixAt2DBIT(BIT, r2, c1 - 1) - getPrefixAt2DBIT(BIT, r1 - 1, c2) + getPrefixAt2DBIT(BIT, r1 - 1, c1 - 1);
+}
+```
+</div>
+
+&nbsp;
+## Segment Tree
+<div className="language-cpp">
+```c++
+/*** 
+MIN RANGE QUERY SEGTREE, MODIFY AS NEEDED
+ORIGINAL ARRAY (start, end, pos) INDEXES ARE 0 INDEXED
+idx * 2     = left child
+idx * 2 + 1 = right child
+idx / 2     = parent
+idx + s / 2 = use idx as leaf
+***/
+class Segtree {
+public:
+    vector<ll> tree;
+    Segtree(ll n) {
+        // Reserve enough space for internal nodes + leaf
+        ll s = 1;
+        while (s < n) {
+            s *= 2;
+        }
+        this->tree = vector<ll>(2 * s, 0);
+    }    
+    
+    void print() {
+        cout << "tree is [";
+        for (ll i = 1; i < this->tree.size() - 1; i++) {
+            cout << this->tree[i] << ", ";
+        }
+        cout << this->tree[this->tree.size() - 1] << "]\n";
+        return;
+    }
+    
+    void update(ll pos, ll val) {
+        // Update leaf node
+        ll at = pos + (this->tree.size() / 2);
+        this->tree[at] = val;
+
+        // Work up from leaf node
+        pos = at / 2;
+        while (pos) {
+            this->tree[pos] = min(this->tree[pos * 2], this->tree[pos * 2 + 1]); // REPLACE WITH WHATEVER TYPE OF UPDATE TREE NEEDS
+            pos /= 2;
+        }
+        return;
+    }
+    
+    ll getTop() {
+        return this->tree[1];
+    }
+
+    ll getRange(int start, int end) {
+        // Move to leaf nodes
+        start += tree.size() / 2;
+        end += tree.size() / 2;
+        ll res = LLONG_MAX; // REPLACE WITH WHATEVER INITIAL VAL TREE NEEDS
+
+        // Work up from leaf nodes
+        while (start <= end) {
+            // Only include the value at start & move to the next position if right child
+            // Cannot use its parent anymore since it will be out bounds -> start++
+            if (start % 2 == 1) {
+                res = min(res, tree[start]); // REPLACE WITH QUERY
+                start++;
+            }
+
+            // Only include the value at end & move to the next position if left child
+            // Cannot use its parent anymore since it will be out bounds -> end--
+            if (end % 2 == 0) {
+                res = min(res, tree[end]); // REPLACE WITH QUERY
+                end--;
+            }
+
+            // Move up the tree
+            start /= 2;
+            end /= 2;
+        }
+        return res;
+    }
+};
 ```
 </div>

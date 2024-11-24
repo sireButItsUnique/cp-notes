@@ -1,7 +1,8 @@
 {
     "Getting Started":[
         ["Environment","/docs/environment",false],
-        ["Template/Boilerplate","/docs/template",false]
+        ["Template/Boilerplate","/docs/template",false],
+        ["Debugging","/docs/debug",false]
     ],
     "Algorithm Types":[
         ["Brute Force","/docs/bruteforce",false],
@@ -17,12 +18,14 @@
         ["Sorting", "/docs/sorting", false],
         ["Binary Search","/docs/binarysearch",false],
         ["Prefix Sum","/docs/prefixsum",false],
-        ["Monotonic Push & Pop","/docs/monotonic",false]
+        ["Monotonic Push & Pop","/docs/monotonic",false],
+        ["String Hashing","/docs/stringhashing", false]
     ],
     "Useful Data Structures": [
         ["Heap/Priority Queue","/docs/heap",false],
         ["Set/Multiset","/docs/set",false],
         ["Segtree","/docs/segtree",false],
+        ["Fenwick tree (BIT)","/docs/fenwicktree",false],
         ["Difference Array","/docs/differencearray",false],
         ["Bitmask", "/docs/bitmask", false],
         ["Dequeue", "/docs/dequeue", false]
@@ -32,11 +35,14 @@
         ["DFS & BFS","/docs/dfsbfs",false],
         ["Dijkstra (fast)","/docs/dijkstra",false],
         ["Bellman Ford (negative)","/docs/bellmanford",false],
-        ["Floyd-Warshall (all pairs)", "/docs/floydwarshall", false]
+        ["Floyd-Warshall (all pairs)", "/docs/floydwarshall", false],
+        ["Tree Tricks (TT)", "/docs/trees", false],
+        ["DSU","/docs/dsu",false]
     ],
     "Number Theory":[
         ["Permutations", "/docs/permutations",false],
         ["Modulo Arithmetic", "/docs/modulo", false],
+        ["Factorial Arithmetic", "/docs/factorial",false],
         ["XOR Operations", "/docs/xor", false],
         ["AND Operations", "/docs/and", false]
     ],
