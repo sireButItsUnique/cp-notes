@@ -7,7 +7,8 @@
     "Algorithm Types":[
         ["Brute Force","/docs/bruteforce",false],
         ["Greedy Algorithm","/docs/greedy",false],
-        ["Dynamic Programming","/docs/dynamicprogramming",false]
+        ["Dynamic Programming","/docs/dynamicprogramming",false],
+        ["Ad Hoc (#1 Opp)","/docs/adhoc",false]
     ],
     "DP Techniques": [
         ["Sliding Window Trans", "/docs/slidingwindowtransition", false],
@@ -23,6 +24,7 @@
     ],
     "Useful Data Structures": [
         ["Heap/Priority Queue","/docs/heap",false],
+        ["Hashmap","/docs/hashmap",false],
         ["Set/Multiset","/docs/set",false],
         ["Segtree","/docs/segtree",false],
         ["Fenwick tree (BIT)","/docs/fenwicktree",false],
@@ -41,6 +43,7 @@
     ],
     "Number Theory":[
         ["Permutations", "/docs/permutations",false],
+        ["GCD", "/docs/gcd",false],
         ["Modulo Arithmetic", "/docs/modulo", false],
         ["Factorial Arithmetic", "/docs/factorial",false],
         ["XOR Operations", "/docs/xor", false],

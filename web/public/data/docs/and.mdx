@@ -13,6 +13,9 @@ consiting of a single bit then `AND` the two together; if the bit was 0 you will
 
 &nbsp;
 
+It's also used to find the rightmost bit of a number, by `AND`ing the number with the negative of itself.
+Since `-x = !x + 1`, the rightmost bit will be the only bit that is the same in both the number and its negative. 
+
 ## Example
 <div className="language-cpp">
 ```c++ 

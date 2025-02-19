@@ -1,3 +1,25 @@
 Graph Theory > [Dijkstra's Algorithm](/docs/dijkstra/)
 # Dijkstra's Algorithm
 ---
+
+## Definition
+Dijkstra's Algorithm is a a greedy algorithm that finds the shortest path from a single source node 
+to all other nodes in the graph by building a shortest-path tree using a priority queue. Note this means
+it's just a weighted BFS.
+
+&nbsp;
+
+## Application
+The more important part is how to model the graph questions to fit Dijkstra's Algorithm.
+Shortest path surprisingly common (e.g. [cf 2024 D](https://codeforces.com/contest/2024/problem/D)), you just
+need to see the graph in some cases where it's not immediately obvious.
+
+&nbsp;
+
+You also need to limit dijkstra sometimes, since you want to optimize one variable but keep another within a certain range.
+For example ccc15s4, leetcode plane ticket thing, and ccc23s4
+
+## Tricks
+- You can combine distances in equation to abstractify -> dist(a, b) + dist(b, c) = dist(a, c) (e.g. [dmopc21c9p3](https://dmoj.ca/problem/dmopc21c9p3))
+- You can start from multiple sources and run Dijkstra's Algorithm
+- You can start from both the start and the end if it's necessary to go through a certain node (kind of like first note)
